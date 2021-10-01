@@ -1,0 +1,11 @@
+{
+  "name": "vue_petite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "petite-vue.es.js",
+  "scripts": {
+    "pug": "pug -w ./ -o ./html -P"
+  },
+  "author": "",
+  "license": "ISC"
+}

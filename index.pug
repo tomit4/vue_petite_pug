@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Petite-Vue
+    body
+      h2 Petite-Vue Counter
+      template#counter-template My count is {{ count }}
+        button(@click="inc") ++
+      div(v-scope="Counter({ initialCount: 1 })")
+      div(v-scope="Counter({ initialCount: 2 })")
+      script(src="../petite-vue.js")
+      script(src="../vue.js" defer init)

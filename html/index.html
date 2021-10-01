@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petite-Vue</title>
+    <body>
+      <h2>Petite-Vue Counter</h2>
+      <template id="counter-template">My count is {{ count }}
+        <button @click="inc">++</button>
+      </template>
+      <div v-scope="Counter({ initialCount: 1 })"></div>
+      <div v-scope="Counter({ initialCount: 2 })"></div>
+      <script src="../petite-vue.js"></script>
+      <script src="../vue.js" defer init></script>
+    </body>
+  </head>
+</html>

@@ -8,7 +8,9 @@ html(lang="en")
       h2 Petite-Vue Counter
       template#counter-template My count is {{ count }}
         button(@click="inc") ++
-      div(v-scope="Counter({ initialCount: 1 })")
-      div(v-scope="Counter({ initialCount: 2 })")
+      div(@mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 1 })")
+      div(@mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 2 })")
+        div(@mounted="console.log('mounted on: ', $el)" v-scope="") 
+      script(src="../axios.min.js")
       script(src="../petite-vue.js")
       script(src="../vue.js" defer init)

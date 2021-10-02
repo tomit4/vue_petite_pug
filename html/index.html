@@ -9,8 +9,11 @@
       <template id="counter-template">My count is {{ count }}
         <button @click="inc">++</button>
       </template>
-      <div v-scope="Counter({ initialCount: 1 })"></div>
-      <div v-scope="Counter({ initialCount: 2 })"></div>
+      <div @mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 1 })"></div>
+      <div @mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 2 })">
+        <div @mounted="console.log('mounted on: ', $el)" v-scope=""> </div>
+      </div>
+      <script src="../axios.min.js"></script>
       <script src="../petite-vue.js"></script>
       <script src="../vue.js" defer init></script>
     </body>

@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Petite-Vue
-    body
+    body(style="text-align: center; justify-content: center; align-content: center;")
       div(class="container")
         header(href="") Some Website
         main
@@ -18,16 +18,19 @@ html(lang="en")
             h2 Form
             form(@submit.prevent="send()")
               label(for="fullName") Full Name: 
+              br
               input(@keyup="validate()" v-model="message.fullName" id="fullName" type="text" name="fullName" placeholder="Your Name")
               div(v-if="errors.fullName" style="font-size: 80%") {{ errors.fullName }}
               br
               br
-              label(for="email") Email: 
+              label(for="email") Email:
+              br
               input(@keyup="validate()" v-model="message.email" id="email" type="email" name="email" placeholder="foo@bar.com")
               div(v-if="errors.email" style="font-size: 80%") {{ errors.email}}
               br
               br
               label(for="subject") Subject:
+              br
               input(@keyup="validate()" v-model="message.subject" id="subject" type="text" name="subject" placeholder="What You Need")
               div(v-if="errors.subject" style="font-size: 80%") {{ errors.subject}}
               br
@@ -39,9 +42,10 @@ html(lang="en")
               br
               br
               input(type="submit" value="Send Message" class="btn" :disabled = "!errors.valid")
+            br
             div {{ status }}
-            pre {{ message }}
-            pre {{ errors }}
+            //- pre {{ message }}
+            //- pre {{ errors }}
           footer(class="")
             hr
             div(class="") This is where copyright would go

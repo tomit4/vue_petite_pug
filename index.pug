@@ -5,12 +5,45 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Petite-Vue
     body
-      h2 Petite-Vue Counter
-      template#counter-template My count is {{ count }}
-        button(@click="inc") ++
-      div(@mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 1 })")
-      div(@mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 2 })")
-        div(@mounted="console.log('mounted on: ', $el)" v-scope="") 
-      script(src="../axios.min.js")
-      script(src="../petite-vue.js")
-      script(src="../vue.js" defer init)
+      div(class="container")
+        header(href="") Some Website
+        main
+          div(id="theForm")
+            h2 Petite-Vue Counter
+            template#counter-template My count is {{ count }}
+              button(@click="inc") ++
+            div(v-scope="Counter({ initialCount: 1 })")
+            div(v-scope="Counter({ initialCount: 2 })")
+            br
+            h2 Form
+            form(@submit.prevent="send()")
+              label(for="fullName") Full Name: 
+              input(@keyup="validate()" v-model="message.fullName" id="fullName" type="text" name="fullName" placeholder="Your Name")
+              div(v-if="errors.fullName" style="font-size: 80%") {{ errors.fullName }}
+              br
+              br
+              label(for="email") Email: 
+              input(@keyup="validate()" v-model="message.email" id="email" type="email" name="email" placeholder="foo@bar.com")
+              div(v-if="errors.email" style="font-size: 80%") {{ errors.email}}
+              br
+              br
+              label(for="subject") Subject:
+              input(@keyup="validate()" v-model="message.subject" id="subject" type="text" name="subject" placeholder="What You Need")
+              div(v-if="errors.subject" style="font-size: 80%") {{ errors.subject}}
+              br
+              br
+              label(for="message") Message:
+              br
+              textarea(@keyup="validate()" v-model="message.body" id="message" name="message" cols="45" rows="5")
+              div(v-if="errors.body" style="font-size: 80%") {{ errors.body}}
+              br
+              br
+              input(type="submit" value="Send Message" class="btn" :disabled = "!errors.valid")
+            div {{ status }}
+            pre {{ message }}
+            pre {{ errors }}
+          footer(class="")
+            hr
+            div(class="") This is where copyright would go
+    script(src="../petite-vue.js" defer)
+    script(src="../vue.js" defer init)

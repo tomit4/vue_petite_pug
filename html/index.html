@@ -5,17 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petite-Vue</title>
     <body>
-      <h2>Petite-Vue Counter</h2>
-      <template id="counter-template">My count is {{ count }}
-        <button @click="inc">++</button>
-      </template>
-      <div @mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 1 })"></div>
-      <div @mounted="console.log('mounted on: ', $el)" v-scope="Counter({ initialCount: 2 })">
-        <div @mounted="console.log('mounted on: ', $el)" v-scope=""> </div>
+      <div class="container">
+        <header href="">Some Website</header>
+        <main>
+          <div id="theForm">
+            <h2>Petite-Vue Counter</h2>
+            <template id="counter-template">My count is {{ count }}
+              <button @click="inc">++</button>
+            </template>
+            <div v-scope="Counter({ initialCount: 1 })"></div>
+            <div v-scope="Counter({ initialCount: 2 })"></div><br>
+            <h2>Form</h2>
+            <form @submit.prevent="send()">
+              <label for="fullName">Full Name: </label>
+              <input @keyup="validate()" v-model="message.fullName" id="fullName" type="text" name="fullName" placeholder="Your Name">
+              <div v-if="errors.fullName" style="font-size: 80%">{{ errors.fullName }}</div><br><br>
+              <label for="email">Email: </label>
+              <input @keyup="validate()" v-model="message.email" id="email" type="email" name="email" placeholder="foo@bar.com">
+              <div v-if="errors.email" style="font-size: 80%">{{ errors.email}}</div><br><br>
+              <label for="subject">Subject:</label>
+              <input @keyup="validate()" v-model="message.subject" id="subject" type="text" name="subject" placeholder="What You Need">
+              <div v-if="errors.subject" style="font-size: 80%">{{ errors.subject}}</div><br><br>
+              <label for="message">Message:</label><br>
+              <textarea @keyup="validate()" v-model="message.body" id="message" name="message" cols="45" rows="5"></textarea>
+              <div v-if="errors.body" style="font-size: 80%">{{ errors.body}}</div><br><br>
+              <input class="btn" type="submit" value="Send Message" :disabled="!errors.valid">
+            </form>
+            <div>{{ status }}</div>
+            <pre>{{ message }}</pre>
+            <pre>{{ errors }}</pre>
+          </div>
+          <footer>
+            <hr>
+            <div>This is where copyright would go</div>
+          </footer>
+        </main>
       </div>
-      <script src="../axios.min.js"></script>
-      <script src="../petite-vue.js"></script>
-      <script src="../vue.js" defer init></script>
     </body>
+    <script src="../petite-vue.js" defer></script>
+    <script src="../vue.js" defer init></script>
   </head>
 </html>
